@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.everis.ms.clientes.bancarios.entity.Customer;
+import com.everis.ms.clientes.bancarios.entity.Wallet;
 import com.everis.ms.clientes.bancarios.kafka.producer.IKafkaProducer;
 import com.everis.ms.clientes.bancarios.utils.CustomerYankiUtils;
 
@@ -21,7 +22,7 @@ public class TestKafka {
 	
 	@GetMapping("/publish")
 	public void messageTopic(@RequestParam("message") String nombre) {
-		this.kafkaProducer.sendJson(CustomerYankiUtils.PRODUCER_TOPIC, new Customer("20210712",nombre));
+		this.kafkaProducer.sendJson(CustomerYankiUtils.PRODUCER_TOPIC, new Wallet("963852741","12345678", 0.0));
 	}
 
 }

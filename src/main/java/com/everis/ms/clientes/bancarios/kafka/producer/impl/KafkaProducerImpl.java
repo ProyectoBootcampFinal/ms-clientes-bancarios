@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.concurrent.ListenableFuture;
 
 import com.everis.ms.clientes.bancarios.entity.Customer;
+import com.everis.ms.clientes.bancarios.entity.Wallet;
 import com.everis.ms.clientes.bancarios.kafka.producer.IKafkaProducer;
 
 
@@ -14,11 +15,11 @@ import com.everis.ms.clientes.bancarios.kafka.producer.IKafkaProducer;
 public class KafkaProducerImpl implements IKafkaProducer{
 
     @Autowired
-    private KafkaTemplate<String, Customer> kafkaTemplate;
+    private KafkaTemplate<String, Wallet> kafkaTemplate;
 	
 	@Override
-	public ListenableFuture<SendResult<String, Customer>> sendJson(String topic, Customer Customer) {
-		return kafkaTemplate.send(topic, Customer);
+	public ListenableFuture<SendResult<String, Wallet>> sendJson(String topic, Wallet wallet) {
+		return kafkaTemplate.send(topic, wallet);
 	}
 
 

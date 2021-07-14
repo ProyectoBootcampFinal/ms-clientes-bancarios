@@ -20,6 +20,7 @@ import org.springframework.kafka.support.serializer.JsonDeserializer;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
 import com.everis.ms.clientes.bancarios.entity.Customer;
+import com.everis.ms.clientes.bancarios.entity.Wallet;
 import com.everis.ms.clientes.bancarios.utils.CustomerYankiUtils;
 
 
@@ -48,7 +49,7 @@ public class KafkaConfiguration {
     
     
     @Bean
-    public ProducerFactory<String, Customer> producerFactory() {
+    public ProducerFactory<String, Wallet> producerFactory() {
         Map<String, Object> config = new HashMap<>();
 
         config.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, CustomerYankiUtils.SERVER_CONFIG);
@@ -60,7 +61,7 @@ public class KafkaConfiguration {
 
 
     @Bean
-    public KafkaTemplate<String, Customer> kafkaTemplate() {
+    public KafkaTemplate<String, Wallet> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
 }
