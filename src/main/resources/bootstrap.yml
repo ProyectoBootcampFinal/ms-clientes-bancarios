@@ -1,0 +1,13 @@
+server:
+   port: 8083
+   error:
+      include-message: always
+      include-binding-erros: always
+
+spring:
+  application:
+    name: ms-clientes-bancarios
+  data:
+    mongodb:
+      uri: mongodb+srv://admin:tSJKvHQlyhdcAFHh@cluster0.pwzlu.mongodb.net/bank?retryWrites=true&w=majority
+      
