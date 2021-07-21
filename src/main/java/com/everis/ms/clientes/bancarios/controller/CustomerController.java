@@ -51,16 +51,16 @@ public class CustomerController {
 	  }
 	  
 	  /** Actualizar cliente por numero de identidad. */
-	  @PutMapping("/{indentityNumber}")
-	  public Mono<Customer> update(@RequestBody Customer customer, @PathVariable("indentityNumber") String indentityNumber) {
+	  @PutMapping
+	  public Mono<Customer> update(@RequestBody Customer customer) {
 		  log.info("CustomerController.update is calling");
-		  return service.updateCustomer(customer, indentityNumber);
+		  return service.updateCustomer(customer);
 	  }
 	  
 	  /** Eliminar cliente por numero de identidad. */
 	  @DeleteMapping("/{indentityNumber}")
-	  public Mono<Customer> delete(@PathVariable("indentityNumber") String indentityNumber) {
-		  log.info("CustomerController.update is calling");
-		  return service.deleteCustomer(indentityNumber);	    
+	  public Mono<Void> delete(@PathVariable("indentityNumber") String indentityNumber) {
+		  log.info("CustomerController.delete is calling");
+		  return service.delete(indentityNumber);	    
 	  }
 }

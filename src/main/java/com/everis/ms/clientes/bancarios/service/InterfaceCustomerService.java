@@ -15,7 +15,7 @@ public interface InterfaceCustomerService extends InterfaceCRUDService<Customer,
 	
 	Mono<Customer> createCustomer(Customer customer);
 	  
-	Mono<Customer> updateCustomer(Customer customer, String indentityNumber);
+	Mono<Customer> updateCustomer(Customer customer);
 	  
-	Mono<Customer> deleteCustomer(String indentityNumber);
+	Mono<Void> deleteCustomer(String indentityNumber);
 }

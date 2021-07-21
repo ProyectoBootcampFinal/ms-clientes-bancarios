@@ -48,7 +48,7 @@ public class CustomerServiceImpl extends CRUDServiceImpl<Customer, String> imple
 	
 	
 	@Override
-	public Mono<Customer> updateCustomer(Customer customer, String indentityNumber) {
+	public Mono<Customer> updateCustomer(Customer customer) {
 		// TODO Auto-generated method stub
 		return repository.findById(customer.getId())
 				.switchIfEmpty(Mono.error( new EntityNotFoundException(msgNotFound) ))
@@ -57,10 +57,11 @@ public class CustomerServiceImpl extends CRUDServiceImpl<Customer, String> imple
 	
 	
 	@Override
-	public Mono<Customer> deleteCustomer(String indentityNumber) {
+	public Mono<Void> deleteCustomer(String indentityNumber) {
 		// TODO Auto-generated method stub
 		return  repository.findByIdentityNumber(indentityNumber)
-				.switchIfEmpty(Mono.error(new EntityNotFoundException(msgNotFound)) );
+				.switchIfEmpty(Mono.error(new EntityNotFoundException(msgNotFound)))
+				.flatMap(item -> repository.deleteById(indentityNumber));
 	}
 
 }
